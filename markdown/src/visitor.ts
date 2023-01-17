@@ -52,3 +52,9 @@ export class HorizontalRuleVisitor extends VisitorBase {
     super(TagType.HorizontalRule, new TagTypeToHtml())
   }
 }
+
+export class BlockquoteVisitor extends VisitorBase {
+  constructor() {
+    super(TagType.Blockquote, new TagTypeToHtml())
+  }
+}

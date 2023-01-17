@@ -1,4 +1,4 @@
-import { Header1ChainHandler, Header2ChainHandler, Header3ChainHandler, Header4ChainHandler, Header5ChainHandler, Header6ChainHandler, HorizontalRuleChainHandler, ParagraphHandler } from "./chain-of-responsibility";
+import { BlockquoteChainHandler, Header1ChainHandler, Header2ChainHandler, Header3ChainHandler, Header4ChainHandler, Header5ChainHandler, Header6ChainHandler, HorizontalRuleChainHandler, ParagraphHandler } from "./chain-of-responsibility";
 import { ParseChainHandler } from "./chain-of-responsibility-implementation";
 import { IMarkdownDocument, MarkdownDocument } from "./markdown-document";
 import { ParseElement } from "./parsing-elements";
@@ -19,6 +19,8 @@ class ChainOfResponsibilityFactory {
     const horizontalRule = new HorizontalRuleChainHandler(document)
 
     const paragraph = new ParagraphHandler(document)
+    
+    const blockquote = new BlockquoteChainHandler(document)
 
     head1.setNext(head2)
     head2.setNext(head3)
@@ -26,7 +28,8 @@ class ChainOfResponsibilityFactory {
     head4.setNext(head5)
     head5.setNext(head6)
     head6.setNext(horizontalRule)
-    horizontalRule.setNext(paragraph)
+    horizontalRule.setNext(blockquote)
+    blockquote.setNext(paragraph)
 
     return head1
   }
@@ -41,6 +44,7 @@ class Markdown {
     for (let i = 0; i < lines.length; i++) {
       const parseElement: ParseElement = new ParseElement();
       parseElement.currentLine = lines[i]
+
       header1.handleRequest(parseElement)
     }
 

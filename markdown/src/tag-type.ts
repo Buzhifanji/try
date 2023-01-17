@@ -11,7 +11,8 @@ export enum TagType {
   Header4,
   Header5,
   Header6,
-  HorizontalRule
+  HorizontalRule,
+  Blockquote
 }
 
 
@@ -31,6 +32,7 @@ export class TagTypeToHtml {
     this.tagType.set(TagType.Header6, "h6");
     this.tagType.set(TagType.Paragraph, "p");
     this.tagType.set(TagType.HorizontalRule, "hr")
+    this.tagType.set(TagType.Blockquote, "blockquote")
   }
 
   /**开标签 */

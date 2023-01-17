@@ -21,6 +21,8 @@ export abstract class Handler<T> {
       if (!isNull(this.next)) {
         this.next.handleRequest(request)
       }
+
+      // console.error('no next handler')
       return
     }
   }
