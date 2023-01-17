@@ -1,0 +1,21 @@
+{
+  "name": "try",
+  "version": "1.0.0",
+  "description": "学与不学，知识就在哪里。",
+  "main": "index.js",
+  "scripts": {
+    "markdown":"pnpm run -C  markdown dev"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buzhifanji/try.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Buzhifanji/try/issues"
+  },
+  "homepage": "https://github.com/Buzhifanji/try#readme"
+}
