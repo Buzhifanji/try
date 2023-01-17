@@ -1,7 +1,7 @@
 import { Handler, ParseChainHandler } from "./chain-of-responsibility-implementation";
 import { IMarkdownDocument } from "./markdown-document";
 import { ParseElement } from "./parsing-elements";
-import { Header1Visitor, Header2Visitor, Header3Visitor, HorizontalRuleVisitor, ParagraphVisitor } from "./visitor";
+import { Header1Visitor, Header2Visitor, Header3Visitor, Header4Visitor, Header5Visitor, Header6Visitor, HorizontalRuleVisitor, ParagraphVisitor } from "./visitor";
 import { IVisitable, IVisitor, Visitable } from "./visitor-pattern-base";
 
 export class Header1ChainHandler extends ParseChainHandler {
@@ -19,6 +19,21 @@ export class Header2ChainHandler extends ParseChainHandler {
 export class Header3ChainHandler extends ParseChainHandler {
   constructor(document: IMarkdownDocument) {
     super(document, "### ", new Header3Visitor());
+  }
+}
+export class Header4ChainHandler extends ParseChainHandler {
+  constructor(document: IMarkdownDocument) {
+    super(document, "#### ", new Header4Visitor());
+  }
+}
+export class Header5ChainHandler extends ParseChainHandler {
+  constructor(document: IMarkdownDocument) {
+    super(document, "##### ", new Header5Visitor());
+  }
+}
+export class Header6ChainHandler extends ParseChainHandler {
+  constructor(document: IMarkdownDocument) {
+    super(document, "###### ", new Header6Visitor());
   }
 }
 

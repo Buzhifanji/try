@@ -23,6 +23,24 @@ export class Header3Visitor extends VisitorBase {
   }
 }
 
+export class Header4Visitor extends VisitorBase {
+  constructor() {
+    super(TagType.Header4, new TagTypeToHtml())
+  }
+}
+
+export class Header5Visitor extends VisitorBase {
+  constructor() {
+    super(TagType.Header5, new TagTypeToHtml())
+  }
+}
+
+export class Header6Visitor extends VisitorBase {
+  constructor() {
+    super(TagType.Header6, new TagTypeToHtml())
+  }
+}
+
 export class ParagraphVisitor extends VisitorBase {
   constructor() {
     super(TagType.Paragraph, new TagTypeToHtml())

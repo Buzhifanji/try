@@ -1,4 +1,4 @@
-import { Header1ChainHandler, Header2ChainHandler, Header3ChainHandler, HorizontalRuleChainHandler, ParagraphHandler } from "./chain-of-responsibility";
+import { Header1ChainHandler, Header2ChainHandler, Header3ChainHandler, Header4ChainHandler, Header5ChainHandler, Header6ChainHandler, HorizontalRuleChainHandler, ParagraphHandler } from "./chain-of-responsibility";
 import { ParseChainHandler } from "./chain-of-responsibility-implementation";
 import { IMarkdownDocument, MarkdownDocument } from "./markdown-document";
 import { ParseElement } from "./parsing-elements";
@@ -12,6 +12,9 @@ class ChainOfResponsibilityFactory {
     const head1: Header1ChainHandler = new Header1ChainHandler(document)
     const head2: Header2ChainHandler = new Header2ChainHandler(document)
     const head3: Header3ChainHandler = new Header3ChainHandler(document)
+    const head4: Header4ChainHandler = new Header4ChainHandler(document)
+    const head5: Header5ChainHandler = new Header5ChainHandler(document)
+    const head6: Header6ChainHandler = new Header6ChainHandler(document)
     
     const horizontalRule = new HorizontalRuleChainHandler(document)
 
@@ -19,7 +22,10 @@ class ChainOfResponsibilityFactory {
 
     head1.setNext(head2)
     head2.setNext(head3)
-    head2.setNext(horizontalRule)
+    head3.setNext(head4)
+    head4.setNext(head5)
+    head5.setNext(head6)
+    head6.setNext(horizontalRule)
     horizontalRule.setNext(paragraph)
 
     return head1
@@ -30,7 +36,7 @@ class Markdown {
   toHtml(text: string): string {
     const document: IMarkdownDocument = new MarkdownDocument()
     const header1: Header1ChainHandler = new ChainOfResponsibilityFactory().build(document)
-    
+
     const lines: string[] = text.split(`\n`)
     for (let i = 0; i < lines.length; i++) {
       const parseElement: ParseElement = new ParseElement();
