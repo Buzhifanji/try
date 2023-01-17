@@ -1,23 +1,17 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
+import "./style.css";
+import "../node_modules/bootstrap/scss/bootstrap.scss";
+import { HtmlHandler } from "./markdown-parser";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-6">
+        <textarea class="form-control h-100" id="markdown"></textarea>
+      </div>
+      <div class="col-6 h-100">
+        <label class="full-width h-100" id="markdown-input"></label>
+      </div>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
   </div>
-`
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+`;
+new HtmlHandler().TextChangeHandler("markdown", "markdown-input");
